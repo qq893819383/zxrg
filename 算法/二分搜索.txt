@@ -1,0 +1,40 @@
+#include <stdio.h>
+int Binarysearch(int a[],int n,int x,int &i,int &j)
+{
+	int middle;
+	int right=n-1;
+	int left=0;
+	while(left<=right)
+	{
+		middle=(left+right)/2;
+		if(x==a[middle])
+		{
+			i=j=middle;
+			return middle;
+		}
+		if(x>a[middle])
+			left=middle+1;
+		else
+			right=middle-1;
+		i=right;
+		j=left;
+	}
+	return -1;
+}
+
+void main()
+{
+	int i;
+	int j;
+	int middle;
+	int b[]={1,2,3,4,3,9,7,8,12,22};
+	middle=Binarysearch(b,10,5,i,j);
+	if(middle!=-1)
+	{
+		printf("x is%d,i is %d,j is %d\n",middle,i,j);
+	}
+	else
+	{
+		printf("can not find,i is %d,j is %d\n",i,j);
+	}
+}
